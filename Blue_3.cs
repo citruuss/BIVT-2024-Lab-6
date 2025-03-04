@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,7 +68,7 @@ namespace Lab_6
             {
                 _name = Name;
                 _surname = Surname;
-                _minutes = new int[10];
+                _minutes = new int[0];
                 _matchesPlayed = 0;
             }
 
@@ -76,12 +76,15 @@ namespace Lab_6
             //метод
             public void PlayMatch(int time)
             {
-                if (_minutes == null || _minutes.Length == 0) return;
-                if (_matchesPlayed < 10) // Проверяем, что массив не переполнен
+                if (_minutes == null) return;
+                var New = new int[_minutes.Length + 1];
+                for (int i = 0; i < _minutes.Length; i++)
                 {
-                    _minutes[_matchesPlayed] = time;
-                    _matchesPlayed++;
+                    New[i] = _minutes[i];
                 }
+                New[New.Length - 1] = time;
+                _minutes = New;
+
             }
             //сортировка по возрастанию времени
             public static void Sort(Participant[] array)
