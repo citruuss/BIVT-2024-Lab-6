@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace Lab_6
 
             //свойства для чтения
             public string Name => _name;
-            public int[] Score
+            public int[] Scores
             {
                 get
                 {
@@ -49,21 +49,19 @@ namespace Lab_6
             public Team(string Name)
             {
                 _name = Name;
-                _scores = new int[20];
+                _scores = new int[0];
             }
 
             public void PlayMatch(int result)
             {
-                if (_scores == null || _scores.Length == 0) return;
+                if (_scores == null) return;
+                var New = new int[_scores.Length + 1];
                 for (int i = 0; i < _scores.Length; i++)
                 {
-                    if (_scores[i] == 0)
-                    {
-                        _scores[i] = result;
-                        break;
-                    }
-
+                    New[i] = _scores[i];
                 }
+                New[New.Length - 1] = result;
+                _scores = New;
             }
 
             public void Print()
