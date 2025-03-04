@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -67,7 +67,7 @@ namespace Lab_6
                 if (result.Length != 5 || _marks == null) return;
                 for (int i=0; i < 2; i++)
                 {
-                    if (_marks[i, 0] == 0)
+                    if (_marks[i, 0] == 0 && _marks[i, 1] == 0 && _marks[i, 2] == 0 && _marks[i, 3] == 0 && _marks[i, 4] == 0)
                     {
                         for (int j = 0; j < 5; j++)
                         {
