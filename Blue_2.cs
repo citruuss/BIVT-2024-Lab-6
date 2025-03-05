@@ -16,6 +16,7 @@ namespace Lab_6
             private string _name;
             private string _surname;
             private int[,] _marks;
+            private int _counter;
 
             //свойства только для чтения
             public string Name => _name;
@@ -24,7 +25,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_marks == null || _marks.Length == 0) return null;
+                    if (_marks == null) return null;
                     int[,] New = new int[2, 5];
                     for (int i = 0; i < 2; i++)
                     {
@@ -36,11 +37,13 @@ namespace Lab_6
                     return New;
                 }
             }
+
+            public int Counter => _counter;
             public int TotalScore
             {
                 get
                 {
-                    if (_marks == null || _marks.Length == 0) return 0;
+                    if (_marks == null) return 0;
                     int score = 0;
                     for (int i = 0; i < 2; i++)
                     {
@@ -59,45 +62,58 @@ namespace Lab_6
                 _name = Name;
                 _surname = Surname;
                 _marks = new int[2, 5];
+                _counter = 0;
             }
 
             //метод
             public void Jump(int[] result)
             {
                 if (result.Length != 5 || _marks == null) return;
-                for (int i=0; i < 2; i++)
+                if (_counter < 2)
                 {
-                    if (_marks[i, 0] == 0 && _marks[i, 1] == 0 && _marks[i, 2] == 0 && _marks[i, 3] == 0 && _marks[i, 4] == 0)
+                    for (int j = 0; j < 5; j++)
                     {
-                        for (int j = 0; j < 5; j++)
-                        {
 
-                            _marks[i, j] = result[j];
+                        _marks[_counter, j] = result[j];
 
-                        }
-                        return;
                     }
-                    
+                    _counter++;
                 }
-                
-                
             }
 
             public static void Sort(Participant[] array)
             {
-                if (array == null || array.Length == 0) return;
-                for (int i=0; i< array.Length; i++)
+                if (array == null) return;
+                for(int i=1, j=2; i < array.Length;)
                 {
-                    for (int j=0; j< array.Length-1-i; j++)
+                    if (i == 0 || array[i].TotalScore <= array[i- 1].TotalScore)
                     {
-                        if (array[j].TotalScore < array[j + 1].TotalScore) 
-                        {
-                            Participant a = array[j];
-                            array[j] = array[j+1];
-                            array[j + 1] = a;
-                        }
+                        i = j;
+                        j++;
+                    }
+                    else
+                    {
+                        Participant a = array[i];
+                        array[i] = array[i - 1];
+                        array[i - 1] = a;
+                        i--;
                     }
                 }
+
+
+
+                //for (int i=0; i< array.Length; i++)
+                //{
+                //    for (int j=0; j< array.Length-1-i; j++)
+                //    {
+                //        if (array[j].TotalScore < array[j + 1].TotalScore) 
+                //        {
+                //            Participant a = array[j];
+                //            array[j] = array[j+1];
+                //            array[j + 1] = a;
+                //        }
+                //    }
+                //}
             }
 
             public void Print()
