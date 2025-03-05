@@ -78,19 +78,7 @@ namespace Lab_6
             //для чтения
             public string Name => _name;
 
-            public Team[] Teams
-            {
-                get
-                {
-                    if (_teams == null) return null;
-                    Team[] New = new Team[_teams.Length];
-                    for (int i = 0; i < _teams.Length; i++)
-                    {
-                        New[i] = _teams[i];
-                    }
-                    return New;
-                }
-            }
+            public Team[] Teams => _teams;
 
             // конструктор
             public Group(string Name)
