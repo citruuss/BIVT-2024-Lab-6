@@ -24,7 +24,7 @@ namespace Lab_6
             { 
                 get 
                 {
-                    if (_minutes == null || _minutes.Length == 0) return null;
+                    if (_minutes == null) return null;
                     int[] New = new int[_minutes.Length];
                     for (int i=0; i < New.Length; i++)
                     {
@@ -39,7 +39,7 @@ namespace Lab_6
             { 
                 get
                 {
-                    if (_minutes == null || _minutes.Length == 0) return 0;
+                    if (_minutes == null) return 0;
                     int time = 0;
                     for (int i=0; i < _minutes.Length; i++)
                     {
@@ -54,7 +54,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_minutes == null || _minutes.Length == 0) return false;
+                    if (_minutes == null) return false;
                     foreach (int time in _minutes)
                     {
                         if (time == 10) return false;
