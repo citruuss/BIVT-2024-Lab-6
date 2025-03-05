@@ -22,7 +22,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_scores == null || _scores.Length == 0) return null;
+                    if (_scores == null) return null;
                     int[] New = new int[_scores.Length];
                     for (int i = 0; i < New.Length; i++)
                     {
@@ -36,7 +36,7 @@ namespace Lab_6
                 get
                 {
                     int score = 0;
-                    if (_scores == null || _scores.Length == 0) return 0;
+                    if (_scores == null) return 0;
                     for (int i = 0; i < _scores.Length; i++)
                     {
                         score += _scores[i];
@@ -82,7 +82,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_teams == null || _teams.Length == 0) return null;
+                    if (_teams == null) return null;
                     Team[] New = new Team[_teams.Length];
                     for (int i = 0; i < _teams.Length; i++)
                     {
@@ -123,7 +123,7 @@ namespace Lab_6
 
             public void Sort()
             {
-                if (_teams == null || _teams.Length == 0) return;
+                if (_teams == null) return;
                 for (int i = 0; i < _teams.Length; i++)
                 {
                     for (int j = 0; j < _teams.Length - i - 1; j++)
